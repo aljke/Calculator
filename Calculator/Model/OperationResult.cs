@@ -13,7 +13,9 @@ namespace Calculator.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
         public DateTime Time { get; set; }
+        [Required]
         public string Operation { get; set; }
-        public double Result { get; set; }
+        [Required]
+        public string Result { get; set; }
     }
 }

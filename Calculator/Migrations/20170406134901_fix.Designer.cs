@@ -8,9 +8,10 @@ using Calculator.Model;
 namespace Calculator.Migrations
 {
     [DbContext(typeof(CalculatorContext))]
-    partial class CalculatorContextModelSnapshot : ModelSnapshot
+    [Migration("20170406134901_fix")]
+    partial class fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")

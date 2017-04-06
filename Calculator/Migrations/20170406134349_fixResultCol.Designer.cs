@@ -8,9 +8,10 @@ using Calculator.Model;
 namespace Calculator.Migrations
 {
     [DbContext(typeof(CalculatorContext))]
-    partial class CalculatorContextModelSnapshot : ModelSnapshot
+    [Migration("20170406134349_fixResultCol")]
+    partial class fixResultCol
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -21,11 +22,9 @@ namespace Calculator.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Operation")
-                        .IsRequired();
+                    b.Property<string>("Operation");
 
-                    b.Property<string>("Result")
-                        .IsRequired();
+                    b.Property<string>("Result");
 
                     b.Property<DateTime>("Time");
 

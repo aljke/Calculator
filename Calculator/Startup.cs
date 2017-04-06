@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Calculator.Model;
 using Microsoft.EntityFrameworkCore;
+using Calculator.Repositories;
 
 namespace Calculator
 {
@@ -33,6 +34,7 @@ namespace Calculator
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             // Add framework services.
             services.AddMvc();
+            services.AddScoped<IOperationResultRepository, OperationResultRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
