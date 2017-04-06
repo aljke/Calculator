@@ -13,6 +13,6 @@ namespace Calculator.Model
         {
         }
 
-        public DbSet<OperationResult> Resulte { get; set; }
+        public DbSet<OperationResult> Results { get; set; }
     }
 }
