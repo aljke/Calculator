@@ -47,6 +47,9 @@
 
 @section IndividualScripts{
     <script type="text/javascript">
+
+        // определение путя к экшену вставки таким образом позволит корректно вызывать ее с разных URL:
+        // localhost:56281 (стартовая страница) и localhost:56281/Calculator/Index
         var ajaxUrl = '@Url.Action("InsertDb", "Calculator")';
     </script>
     <script type="text/javascript" src="~/js/calculator.js"></script>

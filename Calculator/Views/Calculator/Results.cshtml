@@ -23,6 +23,8 @@
 @section HtmlRuntimeScripts{
     <script type="text/javascript" src="~/lib/moment/moment.js"></script>
     <script type="text/javascript">
+
+        // Скрипт нужен для приведения времени UTC к локальному. Проще это делать с помощью moment.js
         function timeUtcToLocal(datetime) {
             var utcTime = moment.utc(datetime);
             var localTime = utcTime.local();

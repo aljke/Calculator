@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Calculator.Model;
+using Calculator.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Calculator.Model;
-using Microsoft.EntityFrameworkCore;
-using Calculator.Repositories;
 
 namespace Calculator
 {
@@ -30,14 +26,18 @@ namespace Calculator
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //DI для исользования класса контекста EF. Работаем с соединением с названием DefaultConnection
+            // к MSSQL
             services.AddDbContext<CalculatorContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             // Add framework services.
             services.AddMvc();
+            // DI. Подставляем объект класса OperationResultRepository, если в коде встречается 
+            // переменная типа IOperationResultRepository
             services.AddScoped<IOperationResultRepository, OperationResultRepository>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // Стандартной конфигурации и дефолтного роута достаточно
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));

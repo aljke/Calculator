@@ -7,6 +7,10 @@ using Calculator.Model;
 
 namespace Calculator.Repositories
 {
+    /// <summary>
+    /// Класс реализует IOperationResultRepository. Класс работает с данными средствами EF.
+    /// OperationResultRepository будет подставляться через DI в переменные типа IOperationResultRepository.
+    /// </summary>
     public class OperationResultRepository : IOperationResultRepository
     {
         private readonly CalculatorContext _context;

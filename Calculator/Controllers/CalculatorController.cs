@@ -6,6 +6,10 @@ using System;
 
 namespace Calculator.Controllers
 {
+    /// <summary>
+    /// В контроллере экшены возвращают главную вьюху с калькулятором и вьюху с результатами.
+    /// Еще один метод вызывается через ajax для вставки записей в таблицу БД.
+    /// </summary>
     public class CalculatorController : Controller
     {
         private readonly IOperationResultRepository _repository;
@@ -20,6 +24,11 @@ namespace Calculator.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Метод принимает данные с клиента в формате json парсит их для получения значений для вставки в БД.
+        /// </summary>
+        /// <param name="jsonbody">Данные из клиента (выражения и результат вычисления).</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult InsertDB([FromBody]JToken jsonbody)
         {
@@ -27,7 +36,7 @@ namespace Calculator.Controllers
             var result = jsonbody.Value<string>("result");
             var row = new OperationResult
             {
-                Time = DateTime.UtcNow,
+                Time = DateTime.UtcNow, //Время UTC позволит корректно отображать его могласно локальному времени клиента
                 Operation = expression,
                 Result = result
             };

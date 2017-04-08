@@ -1,11 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Calculator.Model
 {
+    /// <summary>
+    /// Класс для работы с данными средствами EF.
+    /// </summary>
     public class CalculatorContext : DbContext
     {
         public CalculatorContext(DbContextOptions<CalculatorContext> options)
@@ -13,6 +12,7 @@ namespace Calculator.Model
         {
         }
 
+        // У нас только одна таблица
         public DbSet<OperationResult> Results { get; set; }
     }
 }
