@@ -30,7 +30,7 @@ namespace Calculator.Controllers
             var result = jsonbody.Value<string>("result");
             var row = new OperationResult
             {
-                Time = DateTime.Now,
+                Time = DateTime.UtcNow,
                 Operation = expression,
                 Result = result
             };

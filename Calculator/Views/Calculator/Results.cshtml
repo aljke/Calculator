@@ -12,11 +12,22 @@
         </tr>
         @for (int i = 0; i < Model.Count; i++)
         {
-            <tr>
-                <td>@Model[i].Time</td>
-                <td>@Model[i].Operation</td>
-                <td>@Model[i].Result</td>
+            <tr> 
+                <td><script type="text/javascript">document.write(timeUtcToLocal('@Model[i].Time'))</script></td >
+                <td>Model[i].Operation</td>
+                <td>Model[i].Results</td>
             </tr>
         }
     </table>
+
+@section HtmlRuntimeScripts{
+    <script type="text/javascript" src="~/lib/moment/moment.js"></script>
+    <script type="text/javascript">
+        function timeUtcToLocal(datetime) {
+            var utcTime = moment.utc(datetime);
+            var localTime = utcTime.local();
+            return localTime.format("DD-MM-YYYY HH:mm:ss");
+        }
+    </script>
+}
 

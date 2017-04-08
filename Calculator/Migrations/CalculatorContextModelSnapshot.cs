@@ -21,8 +21,7 @@ namespace Calculator.Migrations
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Operation")
-                        .IsRequired();
+                    b.Property<string>("Operation");
 
                     b.Property<string>("Result")
                         .IsRequired();

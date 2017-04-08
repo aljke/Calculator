@@ -50,7 +50,7 @@ namespace Calculator
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Calculator/Error");
             }
 
             app.UseStaticFiles();

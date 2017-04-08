@@ -1,16 +1,24 @@
 ﻿var isCalculated = false;
 
-function buttonPressed(id) {
-    document.calc.result.value += id;
+function buttonPressed(char) {
+    if (isCalculated) {
+        if (!isNumeric(char) && (char !== '.')) {
+            document.calc.result.value += char;
+            isCalculated = false;
+        } 
+    } else  
+        document.calc.result.value += char;
 }
 
 // Clears calculator input screen
 function clearScreen() {
+    isCalculated = true;
     document.calc.result.value = "";
 }
 
 // Calculates input values
 function calculate() {
+    isCalculated = true;
     var input = document.calc.result.value;
     if ((input.length > 0) && (input !== "Error")) {
         var res;
@@ -19,7 +27,7 @@ function calculate() {
             document.calc.result.value = res;
         } catch (err) {
             document.calc.result.value = "Error";
-            res = "Unhandled error";
+            input = null;
         }
         insertDB(input, res);
     }
@@ -37,4 +45,8 @@ function insertDB(exp, res) {
         error: function (x, e) {
         }
     });
+}
+
+function isNumeric(str) {
+    return /^\d+$/.test(str);
 }
