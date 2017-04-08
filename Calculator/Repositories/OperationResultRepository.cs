@@ -22,7 +22,7 @@ namespace Calculator.Repositories
             _context.SaveChanges();
         }
 
-        public IEnumerable<OperationResult> GetAll()
+        public List<OperationResult> GetAll()
         {
             return _context.Results.ToList();
         }

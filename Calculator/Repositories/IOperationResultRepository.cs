@@ -10,6 +10,6 @@ namespace Calculator.Repositories
     public interface IOperationResultRepository
     {
         void Add(OperationResult result);
-        IEnumerable<OperationResult> GetAll();
+        List<OperationResult> GetAll();
     }
 }

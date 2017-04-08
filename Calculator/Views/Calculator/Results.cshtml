@@ -1,7 +1,22 @@
-
+@model List<Calculator.Model.OperationResult>
 @{
     ViewData["Title"] = "Results";
 }
-
 <h2>Results</h2>
+
+    <table class="table-hover">
+        <tr>
+            <td>Date</td>
+            <td>Expression</td>
+            <td>Result</td>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <tr>
+                <td>@Model[i].Time</td>
+                <td>@Model[i].Operation</td>
+                <td>@Model[i].Result</td>
+            </tr>
+        }
+    </table>
 
