@@ -12,7 +12,7 @@ function buttonPressed(char) {
 
 // Clears calculator input screen
 function clearScreen() {
-    isCalculated = true;
+    isCalculated = false;
     document.calc.result.value = "";
 }
 
@@ -20,13 +20,14 @@ function clearScreen() {
 function calculate() {
     isCalculated = true;
     var input = document.calc.result.value;
-    if ((input.length > 0) && (input !== "Error")) {
+    if (input.length) {
         var res;
         try {
             res = eval(input);
             document.calc.result.value = res;
         } catch (err) {
-            document.calc.result.value = "Error";
+            document.calc.result.value = "Error!";
+            res = "Unhandled error";
             input = null;
         }
         insertDB(input, res);

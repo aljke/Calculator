@@ -6,16 +6,16 @@
 
     <table class="table-hover">
         <tr>
-            <td>Date</td>
-            <td>Expression</td>
-            <td>Result</td>
+            <td><b>Date</b></td>
+            <td><b>Expression</b></td>
+            <td><b>Result</b></td>
         </tr>
         @for (int i = 0; i < Model.Count; i++)
         {
             <tr> 
-                <td><script type="text/javascript">document.write(timeUtcToLocal('@Model[i].Time'))</script></td >
-                <td>Model[i].Operation</td>
-                <td>Model[i].Results</td>
+                <td width="250px"><script type="text/javascript">document.write(timeUtcToLocal('@Model[i].Time'))</script></td >
+                <td width="250px">@Model[i].Operation</td>
+                <td width="250px">@Model[i].Result</td>
             </tr>
         }
     </table>
